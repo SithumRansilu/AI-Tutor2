@@ -1,0 +1,26 @@
+export const syllabus = {
+  physics: [
+    'Units and Dimensions',
+    'Mechanics',
+    'Oscillations and Waves',
+    'Thermal Physics',
+    'Gravitational Fields',
+    'Electric Fields',
+    'Magnetic Fields',
+    'Current Electricity',
+    'Electronics',
+    'Properties of Matter',
+    'Modern Physics',
+  ],
+  maths: [
+    'Algebra',
+    'Trigonometry',
+    'Calculus (Differentiation & Integration)',
+    'Geometry (Coordinate Geometry, Conic Sections)',
+    'Vectors',
+    'Complex Numbers',
+    'Matrices and Determinants',
+    'Probability and Statistics',
+    'Series and Sequences',
+  ],
+};
