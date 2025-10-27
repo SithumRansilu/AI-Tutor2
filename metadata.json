@@ -1,0 +1,5 @@
+{
+  "name": "A/L Physics & Maths AI Tutor",
+  "description": "An AI-powered application to assist Sri Lankan Advanced Level students with their Physics and Mathematics problems. Features a general chatbot, an image-based problem solver, and a deep-thinking mode for complex queries.",
+  "requestFramePermissions": []
+}
