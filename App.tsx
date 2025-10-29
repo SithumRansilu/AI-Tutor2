@@ -1,14 +1,13 @@
 import React, { useState, useCallback } from 'react';
-import { AppMode } from '../types';
-import Chatbot from './Chatbot';
-import ImageAnalyzer from './ImageAnalyzer';
-import ComplexSolver from './ComplexSolver';
-import FormulaSheetGenerator from './FormulaSheetGenerator';
-import PastPapers from './PastPapers';
-import Header from './Header';
-import { ChatIcon, ImageIcon, BrainIcon, FormulaIcon, PastPaperIcon } from './IconComponents';
+import { AppMode } from './types';
+import Chatbot from './components/Chatbot';
+import ImageAnalyzer from './components/ImageAnalyzer';
+import ComplexSolver from './components/ComplexSolver';
+import FormulaSheetGenerator from './components/FormulaSheetGenerator';
+import Header from './components/Header';
+import { ChatIcon, ImageIcon, BrainIcon, FormulaIcon } from './components/IconComponents';
 
-// Define NavButton props type and move component outside App to improve performance.
+// Fix: Define NavButton props type and move component outside App to fix type inference issues and improve performance.
 type NavButtonProps = {
   activeMode: AppMode;
   targetMode: AppMode;
@@ -50,8 +49,6 @@ const App: React.FC = () => {
         return <ComplexSolver />;
       case 'formula':
         return <FormulaSheetGenerator />;
-      case 'pastpapers':
-        return <PastPapers />;
       default:
         return <Chatbot />;
     }
@@ -63,45 +60,25 @@ const App: React.FC = () => {
       <main className="flex-1 flex flex-col p-2 sm:p-4 md:p-6 min-h-0">
         <div className="w-full max-w-4xl mx-auto flex flex-col flex-1">
           <nav className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 p-2 mb-4 bg-gray-800/50 rounded-xl border border-gray-700 shadow-md">
-            {/* Fix: Added children to NavButton to resolve missing prop error. */}
             <NavButton activeMode={mode} targetMode="chatbot" onClick={setMode}>
-              <>
-                <ChatIcon />
-                <span className="hidden sm:inline">AI Chat Tutor</span>
-                <span className="sm:hidden">Chat</span>
-              </>
+              <ChatIcon />
+              <span className="hidden sm:inline">AI Chat Tutor</span>
+               <span className="sm:hidden">Chat</span>
             </NavButton>
-            {/* Fix: Added children to NavButton to resolve missing prop error. */}
             <NavButton activeMode={mode} targetMode="image" onClick={setMode}>
-              <>
-                <ImageIcon />
-                <span className="hidden sm:inline">Image Problem Solver</span>
-                <span className="sm:hidden">Image</span>
-              </>
+              <ImageIcon />
+              <span className="hidden sm:inline">Image Problem Solver</span>
+               <span className="sm:hidden">Image</span>
             </NavButton>
-            {/* Fix: Added children to NavButton to resolve missing prop error. */}
             <NavButton activeMode={mode} targetMode="complex" onClick={setMode}>
-              <>
-                <BrainIcon />
-                <span className="hidden sm:inline">Complex Query Mode</span>
-                <span className="sm:hidden">Complex</span>
-              </>
+              <BrainIcon />
+              <span className="hidden sm:inline">Complex Query Mode</span>
+              <span className="sm:hidden">Complex</span>
             </NavButton>
-            {/* Fix: Added children to NavButton to resolve missing prop error. */}
-            <NavButton activeMode={mode} targetMode="formula" onClick={setMode}>
-              <>
-                <FormulaIcon />
-                <span className="hidden sm:inline">Formula Sheets</span>
-                <span className="sm:hidden">Formulas</span>
-              </>
-            </NavButton>
-            {/* Fix: Added children to NavButton to resolve missing prop error. */}
-            <NavButton activeMode={mode} targetMode="pastpapers" onClick={setMode}>
-              <>
-                <PastPaperIcon />
-                <span className="hidden sm:inline">Past Papers</span>
-                <span className="sm:hidden">Papers</span>
-              </>
+             <NavButton activeMode={mode} targetMode="formula" onClick={setMode}>
+              <FormulaIcon />
+              <span className="hidden sm:inline">Formula Sheets</span>
+              <span className="sm:hidden">Formulas</span>
             </NavButton>
           </nav>
           <div className="flex-1 flex flex-col bg-gray-800 rounded-xl border border-gray-700 shadow-inner min-h-0">
